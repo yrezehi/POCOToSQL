@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\Projects\\PTSQL\\Generator\\Generator.csproj",
-      "projectName": "Generator",
-      "projectPath": "C:\\Users\\Administrator\\Documents\\Projects\\PTSQL\\Generator\\Generator.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\Projects\\PTSQL\\Generator\\Entry.csproj",
+      "projectName": "Entry",
+      "projectPath": "C:\\Users\\Administrator\\Documents\\Projects\\PTSQL\\Generator\\Entry.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Administrator\\Documents\\Projects\\PTSQL\\Generator\\obj\\",
       "projectStyle": "PackageReference",
