@@ -1,4 +1,4 @@
-﻿namespace POCOToSQL.SQL
+﻿namespace PTSQL.SQL
 {
     public enum SQLType
     {
