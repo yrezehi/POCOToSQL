@@ -50,9 +50,14 @@ namespace PTSQL.SQL
             return SQLType.nvarchar;
         }
 
-        public static SQLType ToType()
+        public static Type ToType(this SQLType type)
         {
+            if (MapperDicionarySTP.ContainsKey(type))
+            {
+                return MapperDicionarySTP[type];
+            }
 
+            return typeof(string);
         } 
     }
 }
