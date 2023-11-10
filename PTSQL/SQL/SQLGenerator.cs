@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PTSQL.SQL
 {
-    public class Generator
+    public class SQLGenerator
     {
 
     }
