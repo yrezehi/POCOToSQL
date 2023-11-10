@@ -24,13 +24,25 @@ namespace PTSQL.SQL.Tables
             StringBuilder command = new StringBuilder();
 
             command.AppendLine(CommandConstants.CREATE_TABLE(TableName));
-            command.Append(" ( ");
-            command.AppendLine();
+            command.AppendLine(CommandConstants.CLOSED_SCOPE(BuildColumns()));
 
-            return "";
+            return command.ToString();
         }
 
-        private string Build
+        private string BuildColumns()
+        {
+            StringBuilder command = new StringBuilder(); 
+
+            foreach (var column in Columns)
+            {
+                command.Append(CommandConstants.COLUMN_NAME(column.ColumnName));
+                command.Append(column.DataType);
+                command.Append(column.Length);
+                command.Append(column.Nullability);
+            }
+
+            return command.ToString();
+        }
 
     }
 }
