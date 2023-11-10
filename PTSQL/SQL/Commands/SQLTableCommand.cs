@@ -16,7 +16,7 @@ namespace PTSQL.SQL.Tables
 
         private readonly static string DEFAULT_SCHEMA_NAME = "";
 
-        public SQLTableWriter(IEnumerable<SQLColumn> columns, string tableName, string? schemaName = null) =>
+        public SQLTableCommand(IEnumerable<SQLColumn> columns, string tableName, string? schemaName = null) =>
             (Columns, TableName, SchemaName) = (columns, tableName, schemaName ?? DEFAULT_SCHEMA_NAME);
 
         public string Build()
