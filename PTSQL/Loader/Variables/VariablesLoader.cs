@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PTSQL.Loader
+namespace PTSQL.Loader.Variables
 {
-    public class AttributesLoader
+    public static class VariablesLoader
     {
 
-        public CompilationUnitSyntax GetVariables(CompilationUnitSyntax syntaxTree)
+        public static CompilationUnitSyntax GetVariables(CompilationUnitSyntax syntaxTree)
         {
-            IEnumerable<FieldDeclarationSyntax> declarations = syntaxTree.DescendantNodes().OfType<FieldDeclarationSyntax>();
+            var declarations = syntaxTree.DescendantNodes().OfType<PropertyDeclarationSyntax>();
 
             foreach (var declaration in declarations)
             {
-
+                //Console.WriteLine(declaration);
             }
 
             return syntaxTree;
