@@ -11,7 +11,6 @@
             { SQLType.datetime2, typeof(DateTime) },
             { SQLType.datetimeoffset, typeof(DateTimeOffset) },
             { SQLType.@decimal, typeof(decimal) },
-            { SQLType.@float, typeof(double) },
             { SQLType.@float, typeof(float) },
             { SQLType.@int, typeof(int) },
             { SQLType.money, typeof(decimal) },
@@ -28,7 +27,6 @@
         private static readonly Dictionary<Type, SQLType> MapperDicionary = new() {
             { typeof(long), SQLType.bigint },
             { typeof(bool), SQLType.bit },
-            { typeof(string), SQLType.@char },
             { typeof(DateTime), SQLType.datetime },
             { typeof(decimal), SQLType.@decimal },
             { typeof(float), SQLType.@float },

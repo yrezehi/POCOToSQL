@@ -1,21 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using PTSQL.Loader.Classes;
-using PTSQL.Loader.Variables;
-using PTSQL.SQL;
-using PTSQL.SQL.Commands;
+using PTSQL;
 
-Console.WriteLine("Hello, World!");
-
-List<SQLColumn> columns = new()
-{
-    new SQLColumn("Id"),
-    new SQLColumn("LastLogin")
-};
-
-var resultTable = new SQLTableCommand(columns, "Users").Build();
-
-var syntaxTree = ClassLoader.Load("C:\\Users\\Administrator\\Documents\\Projects\\Hisuh\\Hisuh\\Models\\Google\\GoogleMapsImage.cs");
-
-VariablesLoader.GetVariables(syntaxTree);
+var syntaxTree = Generator.GenerateTable("C:\\Users\\Administrator\\Documents\\Projects\\Hisuh\\Hisuh\\Models\\Google\\GoogleMapsImage.cs");
 
 Console.WriteLine("Program Finished Execution!");

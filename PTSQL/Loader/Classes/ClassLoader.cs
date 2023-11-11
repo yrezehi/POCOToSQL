@@ -15,20 +15,6 @@ namespace PTSQL.Loader.Classes
             return ParseClassSyntax(LoadAsText(classPath));
         }
 
-        public static CompilationUnitSyntax LoadInstance(string classPath)
-        {
-            var unitSyntax = ClassLoader.Load(classPath);
-
-            var classDeclaration = unitSyntax.DescendantNodes().OfType<ClassDeclarationSyntax>().LastOrDefault();
-
-            if (classDeclaration == null)
-            {
-                throw new ArgumentException("No Class Declaration Was Found!");
-            }
-
-            return ClassMetadata.Create(CLA);
-        }
-
         private static string LoadAsText(string classPath)
         {
             using (var streamReader = new StreamReader(classPath))
