@@ -15,6 +15,13 @@ namespace PTSQL.Loader.Classes
             return ParseClassSyntax(LoadAsText(classPath));
         }
 
+        public static CompilationUnitSyntax LoadInstance(string classPath)
+        {
+            CompilationUnitSyntax unitSyntax = ClassLoader.Load(classPath);
+
+
+        }
+
         private static string LoadAsText(string classPath)
         {
             using (var streamReader = new StreamReader(classPath))
