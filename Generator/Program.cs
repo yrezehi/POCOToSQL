@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using PTSQL.Loader;
+using PTSQL.Loader.Classes;
 using PTSQL.Loader.Variables;
 using PTSQL.SQL;
 using PTSQL.SQL.Commands;

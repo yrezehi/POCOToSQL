@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace PTSQL.Loader
+namespace PTSQL.Loader.Classes
 {
     public static class ClassLoader
     {
@@ -24,6 +24,6 @@ namespace PTSQL.Loader
         }
 
         private static CompilationUnitSyntax ParseClassSyntax(string serializedClass) =>
-            (CompilationUnitSyntax) CSharpSyntaxTree.ParseText(serializedClass).GetRoot();
+            (CompilationUnitSyntax)CSharpSyntaxTree.ParseText(serializedClass).GetRoot();
     }
 }

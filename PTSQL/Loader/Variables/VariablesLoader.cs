@@ -6,9 +6,9 @@ namespace PTSQL.Loader.Variables
 {
     public static class VariablesLoader
     {
-        public static IList<Variable> GetVariables(CompilationUnitSyntax compilationSyntaxTree)
+        public static IList<VariableMetadata> GetVariables(CompilationUnitSyntax compilationSyntaxTree)
         {
-            var variables = new List<Variable>();
+            var variables = new List<VariableMetadata>();
 
             var declarations = compilationSyntaxTree.DescendantNodes().OfType<PropertyDeclarationSyntax>();
             var semanticModel = compilationSyntaxTree.SyntaxTree.GetSemanticModel();
@@ -23,7 +23,7 @@ namespace PTSQL.Loader.Variables
 
                     if (symbolType != null)
                     {
-                        variables.Add(Variable.Create(declarationSymbol.Name, symbolType));
+                        variables.Add(VariableMetadata.Create(declarationSymbol.Name, symbolType));
                     }
 
                 }

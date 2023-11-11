@@ -1,5 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using PTSQL.Loader;
+using PTSQL.Loader.Classes;
 using PTSQL.Loader.Variables;
 using PTSQL.SQL;
 using PTSQL.SQL.Commands;
@@ -13,13 +13,13 @@ namespace PTSQL
         public static void GenerateTable(string classPath)
         {
             CompilationUnitSyntax unitSyntax = ClassLoader.Load(classPath);
-            IEnumerable<Variable> variables = VariablesLoader.GetVariables(unitSyntax);
+            IEnumerable<VariableMetadata> variables = VariablesLoader.GetVariables(unitSyntax);
 
             IEnumerable<SQLColumn> columns = variables.Select(variable =>
                 SQLColumn.Create(variable.Name, type: variable.Type)
             );
 
-            SQLTableCommand.();
+            SQLTableCommand.GetInstance("");
         }
     }
 }

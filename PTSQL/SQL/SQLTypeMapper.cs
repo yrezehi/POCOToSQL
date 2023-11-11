@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace PTSQL.SQL
+﻿namespace PTSQL.SQL
 {
     public static class SQLTypeMapper
     {

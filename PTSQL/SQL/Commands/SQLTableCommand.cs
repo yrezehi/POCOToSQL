@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace PTSQL.SQL.Commands
 {
@@ -18,7 +14,8 @@ namespace PTSQL.SQL.Commands
         public SQLTableCommand(IEnumerable<SQLColumn> columns, string tableName, string? schemaName = null) =>
             (Columns, TableName, SchemaName) = (columns, tableName, schemaName ?? DEFAULT_SCHEMA_NAME);
 
-        public 
+        public static SQLTableCommand GetInstance(string tableName, IEnumerable<SQLColumn> columns) =>
+            new SQLTableCommand(columns, tableName);
 
         public string Build()
         {
