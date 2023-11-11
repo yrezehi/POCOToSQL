@@ -1,3 +1,0 @@
-# PTSQL
-
-POCO To SQL
