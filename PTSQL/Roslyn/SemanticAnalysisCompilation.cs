@@ -7,6 +7,7 @@ namespace PTSQL.Roslyn
     public static class SemanticAnalysisCompilation
     {
         private readonly static string DEFAULT_COMPILATION_NAME = "DEFAULT";
+        private readonly static string DEFAULT_TYPE_PREFIX = "System.";
 
         private static CSharpCompilation CompilationInstance(SyntaxTree syntaxTree) =>
             CSharpCompilation.Create(DEFAULT_COMPILATION_NAME, syntaxTrees: new[] { syntaxTree });
@@ -14,18 +15,11 @@ namespace PTSQL.Roslyn
         public static SemanticModel GetSemanticModel(this SyntaxTree syntaxTree) =>
             CompilationInstance(syntaxTree).GetSemanticModel(syntaxTree);
 
-        public static Type? SymbolToType(this SemanticModel semanticModel, IPropertySymbol symbol)
+        public static Type? SymbolToType(this IPropertySymbol semanticModelsymbol)
         {
-            var typeSymbol = symbol.Type;
-
-            if(typeSymbol.DeclaringSyntaxReferences.Length == 0)
-            {
-                return null;
-            }
-
-            var typeSyntax = typeSymbol.DeclaringSyntaxReferences[0].GetSyntax().ToFullString();
-
-            return Type.GetType(typeSyntax);
+            var typeSymbol = semanticModelsymbol.Type;
+            var x = DEFAULT_TYPE_PREFIX + typeSymbol.Name;
+            return Type.GetType(DEFAULT_TYPE_PREFIX + typeSymbol.Name);
         }
     }
 }
