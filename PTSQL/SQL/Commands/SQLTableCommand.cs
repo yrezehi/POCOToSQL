@@ -18,6 +18,8 @@ namespace PTSQL.SQL.Commands
         public SQLTableCommand(IEnumerable<SQLColumn> columns, string tableName, string? schemaName = null) =>
             (Columns, TableName, SchemaName) = (columns, tableName, schemaName ?? DEFAULT_SCHEMA_NAME);
 
+        public 
+
         public string Build()
         {
             StringBuilder command = new StringBuilder();

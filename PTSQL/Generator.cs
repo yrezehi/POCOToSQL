@@ -2,11 +2,7 @@
 using PTSQL.Loader;
 using PTSQL.Loader.Variables;
 using PTSQL.SQL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PTSQL.SQL.Commands;
 
 namespace PTSQL
 {
@@ -14,10 +10,16 @@ namespace PTSQL
     {
 
         // TODO: It shouldn't be class path bud
-        public static void Generate(string classPath)
+        public static void GenerateTable(string classPath)
         {
             CompilationUnitSyntax unitSyntax = ClassLoader.Load(classPath);
             IEnumerable<Variable> variables = VariablesLoader.GetVariables(unitSyntax);
+
+            IEnumerable<SQLColumn> columns = variables.Select(variable =>
+                SQLColumn.Create(variable.Name, type: variable.Type)
+            );
+
+            SQLTableCommand.();
         }
     }
 }
