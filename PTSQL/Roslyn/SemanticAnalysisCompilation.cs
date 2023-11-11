@@ -1,6 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace PTSQL.Roslyn
 {
@@ -18,7 +17,7 @@ namespace PTSQL.Roslyn
         public static Type? SymbolToType(this IPropertySymbol semanticModelsymbol)
         {
             var typeSymbol = semanticModelsymbol.Type;
-            var x = DEFAULT_TYPE_PREFIX + typeSymbol.Name;
+
             return Type.GetType(DEFAULT_TYPE_PREFIX + typeSymbol.Name);
         }
     }
