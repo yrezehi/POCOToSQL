@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using PTSQL.Loader;
+using PTSQL.Loader.Variables;
 using PTSQL.SQL;
 using PTSQL.SQL.Tables;
 
@@ -12,5 +13,9 @@ List<SQLColumn> columns = new()
 };
 
 var resultTable = new SQLTableCommand(columns, "Users").Build();
+
+var syntaxTree = ClassLoader.Load("C:\\Users\\Administrator\\Documents\\Projects\\Hisuh\\Hisuh\\Models\\Google\\GoogleMapsImage.cs");
+
+VariablesLoader.GetVariables(syntaxTree);
 
 Console.WriteLine("Program Finished Execution!");

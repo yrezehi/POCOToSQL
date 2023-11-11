@@ -16,7 +16,8 @@ namespace PTSQL.Loader.Variables
 
             foreach (var declaration in declarations)
             {
-                //Console.WriteLine(declaration);
+                var declarationType = declaration.Type;
+                var declarationName = declaration.Identifier;
             }
 
             return syntaxTree;
