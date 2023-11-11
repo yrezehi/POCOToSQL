@@ -1,11 +1,10 @@
-﻿using PTSQL.SQL.Commands;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PTSQL.SQL.Tables
+namespace PTSQL.SQL.Commands
 {
     public class SQLTableCommand
     {
@@ -31,7 +30,7 @@ namespace PTSQL.SQL.Tables
 
         private string BuildColumns()
         {
-            StringBuilder command = new StringBuilder(); 
+            StringBuilder command = new StringBuilder();
 
             foreach (var column in Columns)
             {

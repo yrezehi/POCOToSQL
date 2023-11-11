@@ -1,4 +1,4 @@
-﻿namespace PTSQL.SQL.Connection
+﻿namespace PTSQL.SQL.Connections
 {
     public class ConnectionFactory
     {

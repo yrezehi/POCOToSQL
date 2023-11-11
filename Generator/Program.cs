@@ -2,7 +2,7 @@
 using PTSQL.Loader;
 using PTSQL.Loader.Variables;
 using PTSQL.SQL;
-using PTSQL.SQL.Tables;
+using PTSQL.SQL.Commands;
 
 Console.WriteLine("Hello, World!");
 

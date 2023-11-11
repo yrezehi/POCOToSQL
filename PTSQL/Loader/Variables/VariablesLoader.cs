@@ -1,26 +1,25 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using PTSQL.Roslyn;
 
 namespace PTSQL.Loader.Variables
 {
     public static class VariablesLoader
     {
-
-        public static CompilationUnitSyntax GetVariables(CompilationUnitSyntax syntaxTree)
+        public static CompilationUnitSyntax GetVariables(CompilationUnitSyntax compilationSyntaxTree)
         {
-            var declarations = syntaxTree.DescendantNodes().OfType<PropertyDeclarationSyntax>();
+            var declarations = compilationSyntaxTree.DescendantNodes().OfType<PropertyDeclarationSyntax>();
+            var semanticModel = compilationSyntaxTree.SyntaxTree.GetSemanticModel();
 
             foreach (var declaration in declarations)
             {
-                var declarationType = declaration.Type;
-                var declarationName = declaration.Identifier;
+                var declarationSymbol = semanticModel.GetDeclaredSymbol(declaration);
+                
+                var declarationType = declarationSymbol.Type;
+                var declarationName = declarationSymbol.Name;
             }
 
-            return syntaxTree;
+            return compilationSyntaxTree;
         }
     }
 }

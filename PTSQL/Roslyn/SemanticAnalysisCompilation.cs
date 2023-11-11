@@ -8,13 +8,10 @@ namespace PTSQL.Roslyn
     {
         private readonly static string DEFAULT_COMPILATION_NAME = "DEFAULT";
 
-        private static CSharpCompilation CompilationInstance =>
-            CSharpCompilation.Create(DEFAULT_COMPILATION_NAME);
+        private static CSharpCompilation CompilationInstance(SyntaxTree syntaxTree) =>
+            CSharpCompilation.Create(DEFAULT_COMPILATION_NAME, syntaxTrees: new[] { syntaxTree });
 
-        public static SemanticModel GetSemanticModel(this CSharpSyntaxTree syntaxTree) =>
-            CompilationInstance.GetSemanticModel(syntaxTree);
-
-        public static INamedTypeSymbol? GetSemanticType(this SemanticModel semanticModel, TypeSyntax typeSyntax) =>
-            semanticModel.GetDeclaredSymbol(typeSyntax) as INamedTypeSymbol;
+        public static SemanticModel GetSemanticModel(this SyntaxTree syntaxTree) =>
+            CompilationInstance(syntaxTree).GetSemanticModel(syntaxTree);
     }
 }
