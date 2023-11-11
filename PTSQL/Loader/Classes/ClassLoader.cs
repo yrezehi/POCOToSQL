@@ -17,9 +17,16 @@ namespace PTSQL.Loader.Classes
 
         public static CompilationUnitSyntax LoadInstance(string classPath)
         {
-            CompilationUnitSyntax unitSyntax = ClassLoader.Load(classPath);
+            var unitSyntax = ClassLoader.Load(classPath);
 
+            var classDeclaration = unitSyntax.DescendantNodes().OfType<ClassDeclarationSyntax>().LastOrDefault();
 
+            if (classDeclaration == null)
+            {
+                throw new ArgumentException("No Class Declaration Was Found!");
+            }
+
+            return ClassMetadata.Create(CLA);
         }
 
         private static string LoadAsText(string classPath)
