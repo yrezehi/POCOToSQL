@@ -13,5 +13,19 @@ namespace PTSQL.Roslyn
 
         public static SemanticModel GetSemanticModel(this SyntaxTree syntaxTree) =>
             CompilationInstance(syntaxTree).GetSemanticModel(syntaxTree);
+
+        public static Type? SymbolToType(this SemanticModel semanticModel, IPropertySymbol symbol)
+        {
+            var typeSymbol = symbol.Type;
+
+            if(typeSymbol.DeclaringSyntaxReferences.Length == 0)
+            {
+                return null;
+            }
+
+            var typeSyntax = typeSymbol.DeclaringSyntaxReferences[0].GetSyntax().ToFullString();
+
+            return Type.GetType(typeSyntax);
+        }
     }
 }

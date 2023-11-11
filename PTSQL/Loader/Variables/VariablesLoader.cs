@@ -8,15 +8,16 @@ namespace PTSQL.Loader.Variables
     {
         public static CompilationUnitSyntax GetVariables(CompilationUnitSyntax compilationSyntaxTree)
         {
+            var variables = new List<Variable>();
+
             var declarations = compilationSyntaxTree.DescendantNodes().OfType<PropertyDeclarationSyntax>();
             var semanticModel = compilationSyntaxTree.SyntaxTree.GetSemanticModel();
 
             foreach (var declaration in declarations)
             {
                 var declarationSymbol = semanticModel.GetDeclaredSymbol(declaration);
-                
-                var declarationType = declarationSymbol.Type;
-                var declarationName = declarationSymbol.Name;
+
+                variables.Add(Variable.Create(declarationSymbol.Name, declarationSymbol.Type));
             }
 
             return compilationSyntaxTree;
