@@ -14,7 +14,7 @@ namespace PTSQL
         public static string GenerateTable(string classPath)
         {
             CompilationUnitSyntax unitSyntax = ClassLoader.Load(classPath);
-            IEnumerable<VariableMetadata> variables = VariablesLoader.GetVariables(unitSyntax);
+            IEnumerable<VariableMetadata> variables = VariablesLoader.Get(unitSyntax);
 
             SQLTableCommand command = SQLTableCommand.GetInstance(
                 unitSyntax.GetClassDeclaration()!.GetClassName(),

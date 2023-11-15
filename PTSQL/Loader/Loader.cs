@@ -13,12 +13,12 @@ namespace PTSQL.Loader
     public static class Loader
     {
         public static Task<MSLoader> LoadProject() => 
-            ProjectsLoader.LoadProject();
+            ProjectsLoader.Load();
 
         public static CompilationUnitSyntax Class(string path) =>
             ClassLoader.Load(path);
 
         public static IList<VariableMetadata> Variables(CompilationUnitSyntax compilationSyntaxTree) =>
-            VariablesLoader.GetVariables(compilationSyntaxTree);
+            VariablesLoader.Get(compilationSyntaxTree);
     }
 }
