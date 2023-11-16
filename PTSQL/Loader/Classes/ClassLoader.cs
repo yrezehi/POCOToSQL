@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace PTSQL.Loader.Classes
@@ -13,6 +14,26 @@ namespace PTSQL.Loader.Classes
             }
 
             return ParseClassSyntax(LoadAsText(classPath));
+        }
+
+        public static async Task<IEnumerable<ClassDeclarationSyntax>> LoadAll(Solution solution)
+        {
+            var classes = new List<ClassDeclarationSyntax>();
+
+            foreach (var project in solution.Projects)
+            {
+                var compilation = project.GetCompilationAsync().GetAwaiter().GetResult();
+
+                if (compilation != null)
+                {
+                    foreach (var syntaxTree in compilation.SyntaxTrees)
+                    {
+                        classes.AddRange(syntaxTree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToList());
+                    }
+                }
+            }
+            
+            return classes;
         }
 
         private static string LoadAsText(string classPath)

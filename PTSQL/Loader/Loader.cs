@@ -3,11 +3,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using PTSQL.Loader.Classes;
 using PTSQL.Loader.Projects;
 using PTSQL.Loader.Variables;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PTSQL.Loader
 {
