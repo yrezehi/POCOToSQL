@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using PTSQL.Roslyn;
 
 namespace PTSQL.Loader.Classes
 {
@@ -28,7 +29,7 @@ namespace PTSQL.Loader.Classes
                 {
                     foreach (var syntaxTree in compilation.SyntaxTrees)
                     {
-                        classes.AddRange(syntaxTree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ToList());
+                        classes.AddRange(syntaxTree.GetRoot().DescendantNodes().OfType<ClassDeclarationSyntax>().ContainsAttribute("Table").ToList());
                     }
                 }
             }

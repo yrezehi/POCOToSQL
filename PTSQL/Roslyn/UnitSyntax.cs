@@ -1,9 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PTSQL.Roslyn
 {
@@ -11,6 +6,9 @@ namespace PTSQL.Roslyn
     {
         public static ClassDeclarationSyntax? GetClassDeclaration(this CompilationUnitSyntax compilationSyntaxTree) =>
             compilationSyntaxTree.DescendantNodes().OfType<ClassDeclarationSyntax>().LastOrDefault();
+
+        public static IEnumerable<ClassDeclarationSyntax> ContainsAttribute(this IEnumerable<ClassDeclarationSyntax> classDeclarations, string attributeName) =>
+            classDeclarations.Where(declaration => declaration.AttributeLists.Any(attributeSyntax => attributeSyntax.Attributes.Any(attribute => attribute.Name.ToString() == attributeName)));
 
         public static string GetClassName(this ClassDeclarationSyntax declarationSyntax) =>
             declarationSyntax.Identifier.ToString();
