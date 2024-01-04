@@ -6,7 +6,7 @@ namespace PTSQL.Loader.Variables
 {
     public static class VariablesLoader
     {
-        public static IList<VariableMetadata> Get(CompilationUnitSyntax compilationSyntaxTree)
+        public static List<VariableMetadata> Get(CompilationUnitSyntax compilationSyntaxTree)
         {
             var variables = new List<VariableMetadata>();
 
